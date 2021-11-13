@@ -10,3 +10,7 @@
 - npm install
 - npm run dev
 - php artisan ser
+
+default auth:
+email   : admin@gmail.com
+password: password
