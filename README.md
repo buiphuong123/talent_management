@@ -12,5 +12,5 @@
 - php artisan ser
 
 default auth:
-email   : admin@gmail.com
-password: password
+- email   : admin@gmail.com
+- password: password
