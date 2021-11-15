@@ -18,6 +18,6 @@ class Schedule extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User', 'tasks');
+        return $this->belongsToMany('App\Models\User', 'tasks')->withPivot('status');
     }
 }
