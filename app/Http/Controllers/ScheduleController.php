@@ -18,7 +18,14 @@ class ScheduleController extends Controller
         return view('schedule.index', ['schedules' => $schedules]);
     }
 
-    public function show(Request $request){
-        return view('schedule.show');
+    public function show($scheduleId, $userId){
+        $schedule   = Schedule::where('id', $scheduleId)->with('users', function($query) use ($userId){
+            return $query->where('users.id', $userId);
+        })->first();
+        return view('schedule.show', ['schedule' => $schedule]);
+    }
+
+    public function delete($scheduleId){
+        dd($scheduleId);
     }
 }
