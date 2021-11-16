@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap Table with Add and Delete Row Feature</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+@extends('layouts.dashboard')
+
+@section('content')
 <style>
 body {
     color: #404E67;
@@ -19,9 +10,9 @@ body {
 }
 .table-wrapper {
     width: 900px;
-    margin: 30px auto;
-    /* background: #fff; */
-    padding: 20px;	
+    margin: 10px auto;
+    background: #fff;
+    padding: 10px;	
     /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
 }
 .table-wrapper1 {
@@ -131,37 +122,33 @@ table.table .form-control.error {
     margin-top: 7px
 }
 </style>
-</head>
-<body>
 <div class="container-lg">
-    
     <div class="table-responsive">
-
     <div class="table-wrapper">
             <div class="table-title">
-                    <div class="col-sm-8"><h2>自分のタスク</b></h2></div>
+                    <div class="col-sm-8"><h2>タレントプロフィール</b></h2></div>
             </div>
             
            <div class="card-body">
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">名前</label>
                             <div class="col-md-6">
-                                    uyuhuh
+                                    {{ $talent->name }}
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">メールアドレス</label>
                             <div class="col-md-6">
-                                jhjkhjkh
+                                {{ $talent->email }}
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">性</label>
                             <div class="col-md-6 radiostyle row"> 
-                                    <input type="radio" id="nam" name="fav_language" value="HTML">
+                                    <input type="radio" id="nam" name="fav_language" value="男" checked>
                                   <label for="html">男</label><br>
-                                  <input type="radio" id="nu" name="fav_language" value="CSS">
+                                  <input type="radio" id="nu" name="fav_language" value="女">
                                   <label for="css">女</label><br>
                              </div>
                         </div> 
@@ -169,22 +156,22 @@ table.table .form-control.error {
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">詳細の情報</label>
                             <div class="col-md-6">
-                            <ul style="margin-left: -25px">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
+                            <ul style="margin-left: -25px">  
+                                @foreach ($infos as $info)  
+                                    <li>{{ $info }}</li> 
+                                @endforeach        
+                                                 
                             </ul>
+                            
                             </div>
                         </div>
 
                 </div>
-        </div>
 
 
-        <div class="table-wrapper1">
             <div class="table-title">
                
-                    <div class="table-text"><h2>自分のタスク</b></h2></div>
+                <div class="table-text"><h2>自分のタスク</b></h2></div>
             </div>
             <div class="table-title">
                 <div class="row">
@@ -232,5 +219,4 @@ table.table .form-control.error {
         </div>
     </div>
 </div>     
-</body>
-</html>
+@endsection
