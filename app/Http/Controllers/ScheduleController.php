@@ -21,4 +21,12 @@ class ScheduleController extends Controller
     public function show(Request $request){
         return view('schedule.show');
     }
+
+    public function add(Request $request){
+        return view('schedule.add');
+    }
+
+    public function edit(Request $request){
+        return view('schedule.edit');
+    }
 }
