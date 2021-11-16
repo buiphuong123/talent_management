@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ScheduleFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,10 +14,9 @@ class ScheduleFactory extends Factory
     public function definition()
     {
         return [
-            'schedule_name' => $this->faker->company(),
-            'date' => $this->faker->date(),
-            'location' => $this->faker->address(),
-            'information' => $this->faker->text(),
+            'schedule_id' => rand(1, 10),
+            'user_id' => rand(2,20),
+            'status' => rand(0, 3)
         ];
     }
 }
