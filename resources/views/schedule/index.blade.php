@@ -20,7 +20,7 @@
                         <div class="input-group-prepend">
                             <span onclick="search()" class="input-group-text"><i class="fas fa-search"></i></span>
                         </div>
-                        <input id="text_search" type="text" class="form-control text-center" placeholder="検索">
+                        <input onkeypress="handleKeyPress(event)" id="text_search" type="text" class="form-control text-center" placeholder="検索">
                     </div>
                 </div>
                 <div class="col-1 text-center">
@@ -153,6 +153,13 @@
 
 @section('script')
     <script>
+        function handleKeyPress(e){
+            var key=e.keyCode || e.which;
+            if (key==13){
+                search();
+            }
+        }
+
         function search(){
             let textSearch = document.getElementById('text_search').value
             window.location.href = 'http://' + window.location.host + '/schedule/all?search=' + (textSearch);
