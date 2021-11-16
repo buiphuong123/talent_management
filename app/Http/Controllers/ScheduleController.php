@@ -28,4 +28,12 @@ class ScheduleController extends Controller
     public function delete($scheduleId){
         dd($scheduleId);
     }
+
+    public function add(Request $request){
+        return view('schedule.add');
+    }
+
+    public function edit(Request $request){
+        return view('schedule.edit');
+    }
 }
