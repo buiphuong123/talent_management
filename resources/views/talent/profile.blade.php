@@ -1,6 +1,8 @@
 
 @extends('layouts.dashboard')
-
+@section('content-header')
+    プロフィール一覧
+@endsection
 @section('content')
 <style>
 body {
@@ -10,7 +12,7 @@ body {
 }
 .table-wrapper {
     width: 900px;
-    margin: 10px auto;
+    margin: 0px auto;
     background: #fff;
     padding: 10px;	
     /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
@@ -114,6 +116,7 @@ table.table .form-control.error {
 #nam, #nu {
     margin-top: 7px;
     margin-left: 10px;
+
 }
 #nu {
     margin-left: 20px
@@ -125,9 +128,9 @@ table.table .form-control.error {
 <div class="container-lg">
     <div class="table-responsive">
     <div class="table-wrapper">
-            <div class="table-title">
+            <!-- <div class="table-title">
                     <div class="col-sm-8"><h2>タレントプロフィール</b></h2></div>
-            </div>
+            </div> -->
             
            <div class="card-body">
                         <div class="form-group row">
@@ -146,10 +149,29 @@ table.table .form-control.error {
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">性</label>
                             <div class="col-md-6 radiostyle row"> 
-                                    <input type="radio" id="nam" name="fav_language" value="男" checked>
-                                  <label for="html">男</label><br>
-                                  <input type="radio" id="nu" name="fav_language" value="女">
-                                  <label for="css">女</label><br>
+                            @if ($talent->gender === 1)
+                                <input type="radio" id="nam" name="fav_language" value="男" checked>
+                                <label for="css" style="margin-left: 7px">男</label><br>
+                                <input type="radio" id="nu" name="fav_language" value="女">
+                                 <label for="css" style="margin-left: 7px">女</label><br>
+                                <input type="radio" id="nu" name="fav_language" value="他">
+                                <label for="css" style="margin-left: 7px">他</label><br>
+                            @elseif ($talent->gender === 0)
+                                <input type="radio" id="nam" name="fav_language" value="男">
+                                <label for="css" style="margin-left: 7px">男</label><br>
+                                <input type="radio" id="nu" name="fav_language" value="女" checked>
+                                 <label for="css" style="margin-left: 7px">女</label><br>
+                                <input type="radio" id="nu" name="fav_language" value="他">
+                                <label for="css" style="margin-left: 7px">他</label><br>
+                            @else
+                                <input type="radio" id="nam" name="fav_language" value="男">
+                                <label for="css" style="margin-left: 7px">男</label><br>
+                                <input type="radio" id="nu" name="fav_language" value="女">
+                                 <label for="css" style="margin-left: 7px">女</label><br>
+                                <input type="radio" id="nu" name="fav_language" value="他" checked>
+                                <label for="css" style="margin-left: 7px">他</label><br>
+                            @endif
+                                  
                              </div>
                         </div> 
 

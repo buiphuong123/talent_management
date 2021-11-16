@@ -46,9 +46,7 @@ class TalentController extends Controller
      */
     public function show(User $talent) //$id
     {
-        echo($talent);
         $infos = explode(". ", $talent->information);
-        echo(sizeof($infos));
         return view('talent.profile', ['talent' => $talent, 'infos' => $infos]);
     }
 

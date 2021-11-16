@@ -1,9 +1,7 @@
 @extends('layouts.dashboard')
-
 @section('content-header')
-    スケジュール一覧
+    タレント一覧
 @endsection
-
 @section('content')
 
 <style>
@@ -14,7 +12,7 @@ body {
 }
 .table-wrapper {
     width: 1000px;
-    margin: 30px auto;
+    margin: 0px auto;
     background: #fff;
     padding: 20px;	
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -110,9 +108,9 @@ tr:nth-child(even) {
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
-                <div>
+                <!-- <div>
                     <div class="col-sm-8"><h2>タレント一覧</b></h2></div>    
-                </div>
+                </div> -->
                 <div class="row">
                 <div class="col-3 offset-8">
                     <div class="input-group mb-3">
