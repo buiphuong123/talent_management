@@ -14,13 +14,7 @@ body {
     width: 900px;
     margin: 0px auto;
     background: #fff;
-    padding: 10px;	
-    /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
-}
-.table-wrapper1 {
-    width: 900px;
-    margin: 30px auto;
-    /* background: #fff; */
+    padding: 10px;
     /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
 }
 .table-title {
@@ -128,9 +122,9 @@ table.table .form-control.error {
 <div class="container-lg">
     <div class="table-responsive">
     <div class="table-wrapper">
-            <!-- <div class="table-title">
-                    <div class="col-sm-8"><h2>タレントプロフィール</b></h2></div>
-            </div> -->
+            <div style="margin-left: 800px">
+                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            </div>
             
            <div class="card-body">
                         <div class="form-group row">
