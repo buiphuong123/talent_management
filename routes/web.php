@@ -25,3 +25,6 @@ Route::prefix('schedule')->name('schedule.')->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('talent', [\App\Http\Controllers\TalentController::class, 'index'])->name('talent');
+Route::get('/talent/{talent}', [\App\Http\Controllers\TalentController::class, 'show'])->name('talent.profile');
