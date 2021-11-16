@@ -61,6 +61,13 @@ class TalentController extends Controller
         //
     }
 
+    public function add(){
+        return view('talent.add');
+    }
+    
+    public function editTalent(){
+        return view('talent.edit');
+    }
     /**
      * Update the specified resource in storage.
      *

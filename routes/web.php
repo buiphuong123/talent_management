@@ -32,7 +32,7 @@ Route::get('talent', [\App\Http\Controllers\TalentController::class, 'index'])->
 Route::get('/talent/{talent}', [\App\Http\Controllers\TalentController::class, 'show'])->name('talent.profile');
 
 
-Route::get('/add-schedule', [App\Http\Controllers\ScheduleController::class, 'add'])->name('add');
-Route::get('/edit-schedule', [App\Http\Controllers\ScheduleController::class, 'edit'])->name('edit');
-Route::get('/add-talent', [App\Http\Controllers\TalentController::class, 'add'])->name('add');
-Route::get('/edit-talent', [App\Http\Controllers\TalentController::class, 'editTalent'])->name('edit');
+Route::get('/add-schedule', [App\Http\Controllers\ScheduleController::class, 'add'])->name('schedule.add');
+Route::get('/edit-schedule', [App\Http\Controllers\ScheduleController::class, 'edit'])->name('schedule.edit');
+Route::get('/add-talent', [App\Http\Controllers\TalentController::class, 'add'])->name('talent.add');
+Route::get('/edit-talent', [App\Http\Controllers\TalentController::class, 'editTalent'])->name('talent.edit');
