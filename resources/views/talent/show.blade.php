@@ -121,7 +121,7 @@ tr:nth-child(even) {
                     </div>
                 </div>
                 <div class="col-1 text-center">
-                    <i class="fas fa-plus-circle fa-2x"></i>
+                    <a href="{{ route('talent.add') }}"><i class="fas fa-plus-circle fa-2x"></i></a>
                 </div>
             </div>
                 
@@ -143,7 +143,7 @@ tr:nth-child(even) {
                         <td>{{ $talent->email }}</td>
                         <td>{{ $talent->join_company_date }}</td>
                         <td>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="{{ route('talent.edit', $talent->id) }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             <a href="{{ route('talent.profile', $talent->id) }}" class="show" title="Show" data-toggle="tooltip" ><i class="material-icons">remove_red_eye</i></a>
                         </td>

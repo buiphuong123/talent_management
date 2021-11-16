@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-1 text-center">
-                    <i class="fas fa-plus-circle fa-2x"></i>
+                    <a href="{{ route('schedule.add') }}"><i class="fas fa-plus-circle fa-2x"></i></a>
                 </div>
             </div>
             <!-- /.row -->
