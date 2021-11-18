@@ -6,6 +6,7 @@ use App\Models\Schedule;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -29,11 +30,41 @@ class ScheduleController extends Controller
         dd($scheduleId);
     }
 
-    public function add(Request $request){
-        return view('schedule.add');
+    public function store(Request $request){
+        $persons = DB::table('users')->get();
+        $schedule = new Schedule();
+        $schedule->schedule_name = $request->schedulename;
+        $schedule->date = $request->date;
+        $schedule->location = $request->location;
+        $schedule->information = $request->info;
+        $schedule->save();
+        // $task = $request->person;
+        // dd($task);
+        //$task = new Task();
+        return view('schedule.add', compact('persons'));
     }
 
-    public function edit(Request $request){
-        return view('schedule.edit');
+    public function addSchedule(Request $request){
+        $persons = DB::table('users')->get();
+        return view('schedule.add', compact('persons'));
+    }
+
+    public function editSchedule($id){
+        return view('schedule.edit')->with('schedule', Schedule::find($id));
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+        $data = request()->all();
+        $talent = User::find($id);
+        $talent->name = $data['tname'];
+        $talent->email = $data['email'];
+        $talent->gender = $request->has('gender');;
+        $talent->role = $request->has('role');;
+        $talent->join_company_date = $data['date'];
+        $talent->information = $data['description'];
+        $talent->save();
+        return view('schedule.edit')->with('schedule', Schedule::find($id));
     }
 }

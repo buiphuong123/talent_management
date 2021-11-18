@@ -32,7 +32,11 @@ Route::get('talent', [\App\Http\Controllers\TalentController::class, 'index'])->
 Route::get('/talent/{talent}', [\App\Http\Controllers\TalentController::class, 'show'])->name('talent.profile');
 
 
-Route::get('/add-schedule', [App\Http\Controllers\ScheduleController::class, 'add'])->name('schedule.add');
-Route::get('/edit-schedule', [App\Http\Controllers\ScheduleController::class, 'edit'])->name('schedule.edit');
-Route::get('/add-talent', [App\Http\Controllers\TalentController::class, 'add'])->name('talent.add');
-Route::get('/edit-talent', [App\Http\Controllers\TalentController::class, 'editTalent'])->name('talent.edit');
+Route::get('/add-schedule', [App\Http\Controllers\ScheduleController::class, 'addSchedule'])->name('schedule.add');
+Route::post('/store-schedule', [App\Http\Controllers\ScheduleController::class, 'store'])->name('schedule.store');
+Route::get('/edit-schedule', [App\Http\Controllers\ScheduleController::class, 'editSchedule'])->name('schedule.edit');
+Route::post('/{id}/update-schedule', [App\Http\Controllers\ScheduleController::class, 'update'])->name('schedule.update');
+Route::post('/store-talent', [App\Http\Controllers\TalentController::class, 'store'])->name('talent.store');
+Route::get('/add-talent', [App\Http\Controllers\TalentController::class, 'addTalent'])->name('talent.add');
+Route::get('/{id}/edit-talent', [App\Http\Controllers\TalentController::class, 'editTalent'])->name('talent.edit');
+Route::post('/{id}/update-talent', [App\Http\Controllers\TalentController::class, 'update'])->name('talent.update');

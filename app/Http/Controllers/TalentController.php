@@ -35,7 +35,21 @@ class TalentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //         
+        $talent = new User;
+        $talent->name = $request->tname;
+        $talent->email = $request->email;
+        $talent->password = $request->password;
+        $talent->gender = $request->input('gender');
+        $talent->role = $request->input('role');
+        $talent->join_company_date = $request->date;
+        $talent->information = $request->description;
+        $talent->save();
+        return view('talent.add');
+    }
+
+    public function addTalent(){
+        return view('talent.add');
     }
 
     /**
@@ -56,17 +70,9 @@ class TalentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
-    public function add(){
-        return view('talent.add');
-    }
     
-    public function editTalent(){
-        return view('talent.edit');
+    public function editTalent($id){
+        return view('talent.edit')->with('talent', User::find($id));
     }
     /**
      * Update the specified resource in storage.
@@ -78,6 +84,16 @@ class TalentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = request()->all();
+        $talent = User::find($id);
+        $talent->name = $data['tname'];
+        $talent->email = $data['email'];
+        $talent->gender = $request->has('gender');;
+        $talent->role = $request->has('role');;
+        $talent->join_company_date = $data['date'];
+        $talent->information = $data['description'];
+        $talent->save();
+        return view('talent.edit')->with('talent', User::find($id));
     }
 
     /**
