@@ -42,7 +42,21 @@ class TalentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //         
+        $talent = new User;
+        $talent->name = $request->tname;
+        $talent->email = $request->email;
+        $talent->password = $request->password;
+        $talent->gender = $request->input('gender');
+        $talent->role = $request->input('role');
+        $talent->join_company_date = $request->date;
+        $talent->information = $request->description;
+        $talent->save();
+        return view('talent.add');
+    }
+
+    public function addTalent(){
+        return view('talent.add');
     }
 
     /**
@@ -67,10 +81,6 @@ class TalentController extends Controller
     public function edit($id)
     {
         //
-    }
-
-    public function add(){
-        return view('talent.add');
     }
     
     public function editTalent(){

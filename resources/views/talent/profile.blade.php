@@ -126,7 +126,7 @@ table.table .form-control.error {
     <div class="table-responsive">
     <div class="table-wrapper">
             <div style="margin-left: 800px">
-                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                <a href="{{ route('talent.edit', $talent->id) }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
             </div>
             
            <div class="card-body">
