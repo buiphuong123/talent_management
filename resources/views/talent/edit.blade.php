@@ -45,7 +45,17 @@
                                 <label for="exampleFormControlInput1">メールアドレス　(*)</label>
                             </div>
                             <div class="col-md-9">
-                              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="メールアドレスを入力して下さい">
+                              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="メールアドレスを入力して下さい">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleFormControlInput1">パスワード　(*)</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="パスワードを入力して下さい">
                             </div>
                         </div>
                     </div>
@@ -89,7 +99,7 @@
                                 <label for="exampleFormControlSelect1">会社入日　(*)</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="MM/DD/YYYY">
+                                <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="MM/DD/YYYY">
                             </div>
                         </div>
                     </div>
@@ -104,8 +114,8 @@
                         </div>
                     </div>
                     <div class="button">
-                        <button type="button" class="btn btn-danger" style="margin-right: 30px;">キャンセル</button>
-                        <button type="button" class="btn btn-success">編集</button>
+                        <button type="submit" class="btn btn-danger" style="margin-right: 30px;">キャンセル</button>
+                        <button type="submit" class="btn btn-success">編集</button>
                     </div>
                   </form>
             </div>
