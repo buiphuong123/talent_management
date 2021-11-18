@@ -6,16 +6,15 @@
 
 <style>
 body {
-    color: #404E67;
-    background: #F5F7FA;
-    font-family: 'Open Sans', sans-serif;
+    /* color: #404E67; */
+    /* background: #F5F7FA; */
 }
 .table-wrapper {
     width: 1000px;
     margin: 0px auto;
     background: #fff;
     padding: 20px;	
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
 }
 .table-title {
     padding-bottom: 10px;
@@ -30,7 +29,7 @@ body {
     height: 30px;
     font-weight: bold;
     font-size: 12px;
-    text-shadow: none;
+    /* text-shadow: none; */
     min-width: 100px;
     border-radius: 50px;
     line-height: 13px;
@@ -98,8 +97,8 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+.w-5 {
+    display: none
 }
 
 
@@ -117,7 +116,7 @@ tr:nth-child(even) {
                         <div class="input-group-prepend">
                             <span onclick="search()" class="input-group-text"><i class="fas fa-search"></i></span>
                         </div>
-                        <input id="text_search" type="text" class="form-control text-center" placeholder="検索">
+                        <input onkeypress="handleKeyPress(event)" id="text_search" type="text" class="form-control text-center" placeholder="検索">
                     </div>
                 </div>
                 <div class="col-1 text-center">
@@ -126,8 +125,10 @@ tr:nth-child(even) {
             </div>
                 
             </div>
-            <table class="table table-bordered">
-                <thead>
+            <div class="row">
+                <div class="col-12">
+                    <table id="example2" class="table table-bordered table-hover text-center">
+                        <thead style="background-color: #a0e4fc;">
                 
                     <tr>
                         <th>名前</th>
@@ -145,13 +146,36 @@ tr:nth-child(even) {
                         <td>
                             <a href="{{ route('talent.edit', $talent->id) }}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            <a href="{{ route('talent.profile', $talent->id) }}" class="show" title="Show" data-toggle="tooltip" ><i class="material-icons">remove_red_eye</i></a>
+                            <a href="{{ route('talent.show', ['talent' => $talent->id,'option' => 'all']) }}" class="show" title="Show" data-toggle="tooltip" ><i class="material-icons">remove_red_eye</i></a>
+
                         </td>
                     </tr>
                  @endforeach      
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                    <span style="text-align: center;">
+                        {{ $talents->links() }}
+                    </span>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>   
+@endsection
+
+@section('script')
+    <script>
+        function handleKeyPress(e){
+            var key=e.keyCode || e.which;
+            if (key==13){
+                search();
+            }
+        }
+
+        function search(){
+            let textSearch = document.getElementById('text_search').value
+            window.location.href = 'http://' + window.location.host + '/talent?search=' + (textSearch);
+        }
+    </script>
 @endsection
