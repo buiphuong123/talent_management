@@ -5,11 +5,11 @@
 @endsection
 @section('content')
 <style>
-body {
+/* body {
     color: #404E67;
     background: #F5F7FA;
     font-family: 'Open Sans', sans-serif;
-}
+} */
 .table-wrapper {
     width: 900px;
     margin: 0px auto;
@@ -84,13 +84,13 @@ table.table .form-control.error {
     border-color: #f50000;
 }
 
-.btn {
+/* .btn {
     padding: 1px 5px 1px 5px;
     font-size: 10px;
     margin-left: 10px;
     border-width: thin;
     border-color: black;
-}
+} */
 .container-lg {
     /* background: #fff; */
 }
@@ -118,6 +118,9 @@ table.table .form-control.error {
 .radiostyle {
     margin-top: 7px
 }
+.col-md-6 {
+    margin-left: 40px
+}
 </style>
 <div class="container-lg">
     <div class="table-responsive">
@@ -129,7 +132,7 @@ table.table .form-control.error {
            <div class="card-body">
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">名前</label>
-                            <div class="col-md-6">
+                            <div class="col-md-6" >
                                     {{ $talent->name }}
                             </div>
                         </div>
@@ -189,17 +192,21 @@ table.table .form-control.error {
                
                 <div class="table-text"><h2>自分のタスク</b></h2></div>
             </div>
-            <div class="table-title">
+            <div class="container-fluid">
                 <div class="row">
-                    <button type="button" class="btn btn-light">全て</button>
-                    <button type="button" class="btn btn-success">未苦手</button>
-                    <button type="button" class="btn btn-warning">行動中</button>
-                    <button type="button" class="btn btn-primary">完了</button>
-                    <button type="button" class="btn btn-danger">中断</button>
+                    <div class="col-6 mb-4">
+                        <a href="{{ route('talent.show', ['talent' => $talent->id,'option' => 'all'])}}" class="btn btn-default">全て</a>
+                        <a href="{{route('talent.show', ['talent' => $talent->id,'option' => 'not-started'] )}}" class="btn text-white btn-success ml-2">未着手</a>
+                        <a href="{{route('talent.show', ['talent' => $talent->id,'option' => 'processing'])}}" class="btn btn-warning ml-2">進行中</a>
+                        <a href="{{route('talent.show', ['talent' => $talent->id,'option' => 'done'])}}" class="btn text-white btn-info ml-2">完了</a>
+                        <a href="{{route('talent.show', ['talent' => $talent->id,'option' => 'interrupted'])}}" class="btn text-white btn-danger ml-2">中断</a>
+                    </div>
                 </div>
             </div>
-            <table class="table table-bordered">
-                <thead>
+            <div class="row">
+                <div class="col-12">
+                    <table id="example2" class="table table-bordered table-hover text-center">
+                        <thead style="background-color: #a0e4fc;">
                     <tr>
                         <th>スケジュール名</th>
                         <th>時間</th>
@@ -209,29 +216,81 @@ table.table .form-control.error {
                     </tr>
                 </thead>
                 <tbody>
+                @php
+                    $option = explode('/', Request::url())[5];
+                @endphp
+                @foreach ($results as $result)
+                    @if($result->pivot->status == 0 && $option == 'not-started')
+                        <tr>
+                            <td>{{ $result->schedule_name}}</td>
+                            <td>{{ $result->date}}</td>
+                            <td>{{ $result->location}}</td>
+                            <td>
+                                <p class="badge p-2 badge-success">未着手</p>
+                            </td>
+                            <td>{{ $result->information }}</td>
+                        </tr>
+                    @elseif($result->pivot->status == 1 && $option == 'processing')
+
                     <tr>
-                        <td>John Doe</td>
-                        <td>Administration</td>
-                        <td>(171) 555-2222</td>
-                        <td>かか</td>
-                        <td>かか</td>
+                        <td>{{ $result->schedule_name}}</td>
+                        <td>{{ $result->date}}</td>
+                        <td>{{ $result->location}}</td>
+                        <td>
+                            <p class="badge p-2 badge-warning">進行中</p>
+                        </td>
+                        <td>{{ $result->information }}</td>
                     </tr>
+                    @elseif($result->pivot->status == 2 && $option == 'done')
+
+                        <tr>
+                            <td>{{ $result->schedule_name}}</td>
+                            <td>{{ $result->date}}</td>
+                            <td>{{ $result->location}}</td>
+                            <td>
+                            <p class="badge px-3 py-2 badge-info">完了</p>
+                            </td>
+                            <td>{{ $result->information }}</td>
+                        </tr>
+                    @elseif($result->pivot->status == 3 && $option == 'interrupted')
+
                     <tr>
-                        <td>Peter Parker</td>
-                        <td>Customer Service</td>
-                        <td>(313) 555-5735</td>
-                        <td>かか</td>
-                        <td>かか</td>
+                        <td>{{ $result->schedule_name}}</td>
+                        <td>{{ $result->date}}</td>
+                        <td>{{ $result->location}}</td>
+                        <td>
+                        <p class="badge px-3 py-2 badge-danger">中断</p>
+                        </td>
+                        <td>{{ $result->information }}</td>
                     </tr>
+                    @elseif($option == 'all')
                     <tr>
-                        <td>Fran Wilson</td>
-                        <td>Human Resources</td>
-                        <td>(503) 555-9931</td>
-                        <td>かか</td>
-                        <td>かか</td>
-                    </tr>      
-                </tbody>
-            </table>
+                        <td>{{ $result->schedule_name}}</td>
+                        <td>{{ $result->date}}</td>
+                        <td>{{ $result->location}}</td>
+                        <td>
+                        @switch($result->pivot->status)
+                            @case(0)
+                            <p class="badge p-2 badge-success">未着手</p>
+                            @break
+                            @case(1)
+                            <p class="badge p-2 badge-warning">進行中</p>
+                            @break
+                            @case(2)
+                            <p class="badge px-3 py-2 badge-info">完了</p>
+                            @break
+                            @case(3)
+                            <p class="badge px-3 py-2 badge-danger">中断</p>
+                            @break
+                        @endswitch
+                        </td>
+                        <td>{{ $result->information }}</td>
+                    </tr>
+                    @endif
+                @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>     

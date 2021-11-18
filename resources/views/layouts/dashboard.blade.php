@@ -24,7 +24,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="margin-top: -30px">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -73,7 +73,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="{{ url('/talent') }}" class="nav-link">
+                        <a href="{{ route('talent.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Talent

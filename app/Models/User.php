@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function schedule()
     {
-        return $this->belongsToMany('App\Models\Schedule', 'tasks');
+        return $this->belongsToMany('App\Models\Schedule', 'tasks')->withPivot('status');
     }
 }

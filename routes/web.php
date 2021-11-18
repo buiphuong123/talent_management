@@ -27,9 +27,10 @@ Route::prefix('schedule')->name('schedule.')->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::get('talent', [\App\Http\Controllers\TalentController::class, 'index'])->name('talent');
-Route::get('/talent/{talent}', [\App\Http\Controllers\TalentController::class, 'show'])->name('talent.profile');
+Route::prefix('talent')->name('talent.')->group(function () {
+    Route::get('/', [App\Http\Controllers\TalentController::class, 'index'])->name('index');
+    Route::get('/{talent}/{option}', [App\Http\Controllers\TalentController::class, 'show'])->name('show');
+});
 
 
 Route::get('/add-schedule', [App\Http\Controllers\ScheduleController::class, 'add'])->name('schedule.add');
