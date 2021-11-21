@@ -93,13 +93,8 @@
                             <div class="col-md-3">
                                 <label for="exampleFormControlSelect1">会社入日　(*)</label>
                             </div>
-<<<<<<< HEAD
-                            <div class="col-md-9">
-                                <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="MM/DD/YYYY">
-=======
                             <div class="col-md-8">
                                 <input type="date" name="date" class="form-control" id="exampleFormControlInput1" placeholder="MM/DD/YYYY" value="{{ $talent->join_company_date }}">
->>>>>>> BE-edit-add
                             </div>
                         </div>
                     </div>
